@@ -1,0 +1,117 @@
+# ─── Projeto ────────────────────────────────────────────────────────────────
+projeto:
+  nome: "Datathon Passos Mágicos"
+  versao: "1.0.0"
+  descricao: "Modelo preditivo de risco de defasagem escolar"
+
+# ─── Caminhos ───────────────────────────────────────────────────────────────
+caminhos:
+  dados_brutos: "data/raw"
+  dados_processados: "data/processed"
+  modelos: "models"
+  logs: "logs"
+  reports: "reports"
+  arquivo_origem: "BASE DE DADOS PEDE 2024 - DATATHON.xlsx"
+
+# ─── Dados ──────────────────────────────────────────────────────────────────
+dados:
+  abas:
+    - nome: "PEDE2022"
+      ano: 2022
+      coluna_alvo: "Defas"
+    - nome: "PEDE2023"
+      ano: 2023
+      coluna_alvo: "Defasagem"
+    - nome: "PEDE2024"
+      ano: 2024
+      coluna_alvo: "Defasagem"
+  coluna_alvo_unificada: "defasagem"
+  coluna_id: "RA"
+  semente_aleatoria: 42
+  proporcao_teste: 0.2
+  proporcao_validacao: 0.1
+
+# ─── Feature Engineering ────────────────────────────────────────────────────
+features:
+  colunas_numericas:
+    - "INDE"
+    - "IAA"
+    - "IEG"
+    - "IPS"
+    - "IPP"
+    - "IDA"
+    - "IPV"
+    - "IAN"
+    - "nota_matematica"
+    - "nota_portugues"
+    - "nota_ingles"
+    - "idade"
+    - "anos_no_programa"
+  colunas_categoricas:
+    - "genero"
+    - "fase"
+    - "pedra"
+    - "instituicao_ensino"
+  colunas_dropar:
+    - "RA"
+    - "nome"
+    - "turma"
+    - "avaliador1"
+    - "avaliador2"
+    - "avaliador3"
+    - "avaliador4"
+    - "rec_av1"
+    - "rec_av2"
+    - "rec_av3"
+    - "rec_av4"
+    - "destaque_ieg"
+    - "destaque_ida"
+    - "destaque_ipv"
+    - "rec_psicologia"
+
+# ─── Modelos ────────────────────────────────────────────────────────────────
+modelos:
+  nome_arquivo: "modelo_defasagem.pkl"
+  nome_arquivo_preprocessador: "preprocessador.pkl"
+  lista_candidatos:
+    - "RandomForestClassifier"
+    - "GradientBoostingClassifier"
+    - "LogisticRegression"
+    - "SVC"
+  hiperparametros:
+    RandomForestClassifier:
+      n_estimators: [100, 200]
+      max_depth: [5, 10, null]
+      min_samples_split: [2, 5]
+    GradientBoostingClassifier:
+      n_estimators: [100, 200]
+      learning_rate: [0.05, 0.1]
+      max_depth: [3, 5]
+    LogisticRegression:
+      C: [0.1, 1.0, 10.0]
+      max_iter: [500]
+
+# ─── Avaliação ──────────────────────────────────────────────────────────────
+avaliacao:
+  metrica_principal: "f1_macro"
+  metricas_secundarias:
+    - "roc_auc"
+    - "accuracy"
+    - "precision_macro"
+    - "recall_macro"
+  cv_folds: 5
+
+# ─── API ────────────────────────────────────────────────────────────────────
+api:
+  host: "0.0.0.0"
+  porta: 8000
+  titulo: "API - Predição de Risco de Defasagem Escolar"
+  versao: "1.0.0"
+  prefixo: "/api/v1"
+
+# ─── Monitoramento ──────────────────────────────────────────────────────────
+monitoramento:
+  arquivo_referencia: "data/processed/dataset_referencia.parquet"
+  arquivo_producao: "logs/predicoes.jsonl"
+  limiar_drift: 0.1
+  dashboard_porta: 8501

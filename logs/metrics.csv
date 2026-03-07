@@ -1,0 +1,2 @@
+timestamp,modelo,accuracy,f1_macro,f1_weighted,precision,recall,roc_auc,total_amostras,positivos,negativos
+2026-03-07T15:34:06.610401,Pipeline,0.8647,0.8629,0.8646,0.8631,0.8626,0.9452,606,337,269

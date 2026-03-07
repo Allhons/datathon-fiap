@@ -1,0 +1,47 @@
+**/__pycache__
+**/*.py[cod]
+**/*.pyo
+.git/
+.gitignore
+.venv/
+venv/
+*.egg-info/
+
+# Dados brutos (não incluir no container — montar via volume)
+data/raw/
+data/processed/
+
+# Notebooks
+notebooks/
+
+# Testes
+tests/
+htmlcov/
+.coverage
+.pytest_cache/
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Logs
+logs/
+
+# Relatórios
+reports/
+
+# Documentação
+docs/
+README.md
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+*.env
+.env

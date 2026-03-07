@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Dados (não versionar dados brutos sensíveis)
+data/raw/
+data/processed/
+
+# Modelos treinados (artefatos grandes)
+models/*.pkl
+models/*.joblib
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Logs
+logs/*.log
+logs/*.jsonl
+
+# Cobertura de testes
+htmlcov/
+.coverage
+coverage.xml
+.pytest_cache/
+
+# IDEs
+.vscode/
+.idea/
+
+# Docker
+*.env
+
+# OS
+.DS_Store
+Thumbs.db

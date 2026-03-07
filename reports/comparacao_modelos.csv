@@ -1,0 +1,5 @@
+﻿modelo,f1_macro,f1_ponderado,acuracia,precisao_macro,recall_macro,f1_classe_risco,roc_auc,f1_macro_cv_media,f1_macro_cv_std,roc_auc_cv_media,roc_auc_cv_std,accuracy_cv_media,accuracy_cv_std
+GradientBoostingClassifier,0.8629,0.8646,0.8647,0.8631,0.8626,0.8787,0.9452,0.8657,0.0139,0.9426,0.0104,0.868,0.0135
+SVC,0.7692,0.7712,0.7706,0.7687,0.7716,0.7871,0.8634,0.7813,0.0211,0.8665,0.0179,0.7831,0.021
+LogisticRegression,0.7629,0.7658,0.7657,0.7627,0.7631,0.7887,0.8607,0.7706,0.014,0.8598,0.0146,0.7728,0.0131
+RandomForestClassifier,0.7532,0.7568,0.7574,0.7547,0.7523,0.7854,0.8636,0.786,0.0234,0.8754,0.0187,0.7902,0.0221
