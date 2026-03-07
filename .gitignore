@@ -46,6 +46,7 @@ coverage.xml
 .idea/
 
 # Docker
+.env
 *.env
 
 # OS
