@@ -1,6 +1,8 @@
 """
 Rotas da API FastAPI.
 """
+from datetime import datetime
+from src.api.github_logger import push_prediction_to_github
 from fastapi import APIRouter, HTTPException
 from src.api.schemas import DadosEstudante, RespostaPredicao, RespostaSaude
 from src.models.predict import prever, carregar_modelo
@@ -30,6 +32,18 @@ def predict(dados: DadosEstudante):
     try:
         dados_dict = dados.model_dump()
         resultado = prever(dados_dict)
+
+        # --- Log no GitHub ---
+        record = {
+            "timestamp": datetime.utcnow().isoformat(),
+            "predicao": resultado["predicao"],
+            "probabilidade_risco": resultado["probabilidade_risco"],
+            "classificacao": resultado["classificacao"],
+            **dados_dict  # inclui os dados do estudante
+        }
+        push_prediction_to_github(record)
+        # ---------------------
+
         return {
             "status": "sucesso",
             "dados": resultado,
