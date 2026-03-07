@@ -19,7 +19,7 @@ pydantic==2.7.1
 
 # ─── Monitoramento de Drift ──────────────────────────────────────────────────
 evidently==0.4.30
-streamlit==1.43.0
+streamlit==1.40.2
 
 # ─── Visualização (EDA) ───────────────────────────────────────────────────────
 matplotlib==3.9.0
